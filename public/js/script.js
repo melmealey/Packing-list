@@ -1,3 +1,55 @@
+const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
+const city = prompt('Enter the city name:'); // Prompt the user for the city name
+
+// Constructing the API URL for the current weather
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+// Making the API request using fetch, promises, and arrow functions
+fetch(apiUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+    
+// Logging latitude and longitude for each day to the console using arrow functions
+    .then(data => {
+        console.log(data.coord.lat)
+        console.log(data.coord.lon)
+
+  })
+  .catch(error => {
+    console.error('Error fetching data from OpenWeather API:', error);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Uncomment the below code to POST data to the database
