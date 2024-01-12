@@ -1,8 +1,8 @@
 const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
 const city = prompt('Enter the city name:'); // Prompt the user for the city name
 
-// Constructing the API URL for the 5-day forecast
-const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+// Constructing the API URL for the current weather
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
 // Making the API request using fetch, promises, and arrow functions
 fetch(apiUrl)
