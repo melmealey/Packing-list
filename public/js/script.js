@@ -1,5 +1,7 @@
 const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
-const city = prompt('Enter the city name:'); // Prompt the user for the city name
+const city = prompt('Enter a city name to view the current temp:'); // Prompt the user for the city name
+const lat = 35.7915;
+const lon = -78.7811;
 
 // Constructing the API URL for the current weather
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
@@ -12,18 +14,33 @@ fetch(apiUrl)
     }
     return response.json();
   })
-    
-// Logging latitude and longitude for each day to the console using arrow functions
-    .then(data => {
-      console.log(data)
-        // console.log(data.city.coord.lat)
-      
-        // console.log(data.city.coord.lon)
+
+  // Logging latitude and longitude for each day to the console using arrow functions
+  .then(data => {
+    console.log(data)
+    // console.log(data.city.coord.lat)
+
+    // console.log(data.city.coord.lon)
 
   })
   .catch(error => {
     console.error('Error fetching data from OpenWeather API:', error);
   });
+
+// function to get the current temp
+const getTemp = async (lat, lon, apiKey) => {
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  
+  const kelvinTemp = data.main.temp;
+  const fahrenheitTemp = (kelvinTemp - 273.15) * 9/5 + 32;
+  
+  // Displaying the temperature using string interpolation
+console.log (fahrenheitTemp);
+};
+
+getTemp(lat, lon, apiKey);
 
 
 
