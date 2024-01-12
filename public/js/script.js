@@ -15,8 +15,8 @@ fetch(apiUrl)
     
 // Logging latitude and longitude for each day to the console using arrow functions
     .then(data => {
-        console.log(data.city.coord.lat)
-        console.log(data.city.coord.lon)
+        console.log(data.coord.lat)
+        console.log(data.coord.lon)
 
   })
   .catch(error => {
