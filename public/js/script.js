@@ -1,46 +1,28 @@
-const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
-const city = prompt('Enter a city name to view the current temp:'); // Prompt the user for the city name
-const lat = 35.7915;
-const lon = -78.7811;
+let apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
+let city = prompt('Enter a city name to view the current temperature:'); 
 
-// Constructing the API URL for the current weather
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
-// Making the API request using fetch, promises, and arrow functions
 fetch(apiUrl)
   .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+  
     return response.json();
   })
+  .then(async(data) => {
+     //function to 
+console.log(data);
+    const lat = data.coord.lat
+    const lon = data.coord.lon
 
-  // Logging latitude and longitude for each day to the console using arrow functions
-  .then(data => {
-    console.log(data)
-    // console.log(data.city.coord.lat)
-
-    // console.log(data.city.coord.lon)
-
+     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+     const response = await fetch(url);
+     const weatherData = await response.json();
+     console.log (Math.round(weatherData.list[0].main.temp));
+    
   })
   .catch(error => {
     console.error('Error fetching data from OpenWeather API:', error);
   });
-
-// function to get the current temp
-const getTemp = async (lat, lon, apiKey) => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  
-  const kelvinTemp = data.main.temp;
-  const fahrenheitTemp = (kelvinTemp - 273.15) * 9/5 + 32;
-  
-  // Displaying the temperature using string interpolation
-console.log (fahrenheitTemp);
-};
-
-getTemp(lat, lon, apiKey);
 
 
 

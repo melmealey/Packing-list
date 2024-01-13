@@ -1,4 +1,4 @@
 # Packing-list
 
 
-I got info on how to convert Kelvin to Fahrenheit here: https://gist.github.com/brettvaida/beb0487f86972b6ed9d056b80455a263
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round  was used to learn how to round the temp to a whole number
