@@ -8,11 +8,19 @@ fetch(apiUrl)
   
     return response.json();
   })
+<<<<<<< HEAD
   .then(async(data) => {
      //function to 
 console.log(data);
     const lat = data.coord.lat
     const lon = data.coord.lon
+=======
+    
+// Logging latitude and longitude for each day to the console using arrow functions
+    .then(data => {
+        console.log(data.coord.lat)
+        console.log(data.coord.lon)
+>>>>>>> c3459de4ef9d765c3db29c43f76c6f334071fd3b
 
      const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
      const response = await fetch(url);
