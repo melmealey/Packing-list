@@ -1,52 +1,26 @@
-let apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
-let city = prompt('Enter a city name to view the current temperature:'); 
-
+const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
+const city = prompt('Enter a city name to view the current temperature:');
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-
 fetch(apiUrl)
-  .then(response => {
-  
-    return response.json();
-  })
-<<<<<<< HEAD
-  .then(async(data) => {
-     //function to 
-console.log(data);
-    const lat = data.coord.lat
-    const lon = data.coord.lon
-=======
-    
-// Logging latitude and longitude for each day to the console using arrow functions
-    .then(data => {
-        console.log(data.coord.lat)
-        console.log(data.coord.lon)
->>>>>>> c3459de4ef9d765c3db29c43f76c6f334071fd3b
-
-     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-     const response = await fetch(url);
-     const weatherData = await response.json();
-     console.log (Math.round(weatherData.list[0].main.temp));
-    
-  })
-  .catch(error => {
-    console.error('Error fetching data from OpenWeather API:', error);
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(async(data) => {
+        //Function to get the current temp logging to console
+        const lat = tempData.city.coord.lat
+        const lon = tempData.city.coord.lon
+        const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+        const response = await fetch(url);
+        const tempData = await response.json();
+        console.log(Math.round(tempData.list[0].main.temp));
+        // console.log (Math.round('The temperature is ${data.list[0].main.temp} °F'));
+    })
+    .catch(error => {
+        console.error('Error fetching data from OpenWeather API:', error);
+    });
 
 
 
