@@ -1,5 +1,13 @@
 const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
 const city = prompt('Enter the city name:'); // Prompt the user for the city name
+const inputElement = document.getElementById('myInput'); // Naming variable to log input box to console TJ
+
+inputElement.addEventListener('input', function(event) {
+  const value = event.target.value;
+  console.log(value);
+})
+
+
 
 // Constructing the API URL for the current weather
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
