@@ -1,29 +1,27 @@
-const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
-const city = prompt('Enter a city name to view the current temperature:');
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-fetch(apiUrl)
-    .then(response => {
+    const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
+    const city = prompt('Enter a city name to view the current temperature:');
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+    
+    fetch(apiUrl)
+      .then(response => {
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
         return response.json();
-    })
-    .then(async(data) => {
-        //Function to get the current temp logging to console
-        const lat = tempData.city.coord.lat
-        const lon = tempData.city.coord.lon
+      })
+      .then(async (data) => {
+        const lat = data.coord.lat;
+        const lon = data.coord.lon;
         const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
         const response = await fetch(url);
         const tempData = await response.json();
-        console.log(Math.round(tempData.list[0].main.temp));
-        // console.log (Math.round('The temperature is ${data.list[0].main.temp} °F'));
-    })
-    .catch(error => {
+        const temperatureElement = document.getElementById('temperature');
+        console.log(tempData.list[0].main.temp);
+        temperatureElement.textContent = Math.round(tempData.list[0].main.temp) + ' °F';
+      })
+      .catch(error => {
         console.error('Error fetching data from OpenWeather API:', error);
-    });
-
-
-
+      });
 
 
 
