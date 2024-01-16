@@ -1,6 +1,7 @@
+
 const hotWeatherItems = ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'];
-const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'tennis shoes', 'ankle socks'];
-const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks' 'jeans', 'sweater'];
+const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'];
+const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks' 'Jeans', 'Sweater'];
 
 const determineWeatherCategory = temp => {
   if (temp >= 80) {
@@ -16,6 +17,9 @@ const determineWeatherCategory = temp => {
 const temperature = 75; // Replace with the actual temperature
 const clothingList = determineWeatherCategory(temperature);
 console.log('Recommended Clothing:', clothingList);
+
+
+
 
 
 
