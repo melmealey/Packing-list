@@ -32,11 +32,11 @@
 //PACKING-LIST ISSUE #5 DETERMINE PACKING LIST-CRYSTAL
 const hotWeatherItems = ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'];
 const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'];
-const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks' 'Jeans', 'Sweater'];
+const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Jeans', 'Sweater'];
 
 const determineWeatherCategory = temp => {
   if (temp >= 80) {
-    return hotWeatherItems;
+   return hotWeatherItems;
   } else if (temp >= 51 && temp <= 79) {
     return moderateWeatherItems;
   } else {
@@ -55,16 +55,12 @@ console.log('Recommended Clothing:', clothingList);
 
 
 
-//PACKING-LIST ISSUE #7 CHECKBOX FUNCTIONALITY-CRYSTAL
-
-  
 
 
 
 
 
 
-  //PACKING-LIST ISSUE #10 MAKE POST REQUEST-CRYSTAL
 
 
 
