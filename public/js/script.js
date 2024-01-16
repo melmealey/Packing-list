@@ -1,27 +1,50 @@
-const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
-const city = prompt('Enter the city name:'); // Prompt the user for the city name
+const hotWeatherItems = ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'];
+const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'tennis shoes', 'ankle socks'];
+const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'jeans', 'sweater'];
 
-// Constructing the API URL for the current weather
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+const determineWeatherCategory = temp => {
+  if (temp >= 80) {
+    return hotWeatherItems;
+  } else if (temp >= 51 && temp <= 79) {
+    return moderateWeatherItems;
+  } else {
+    return coldWeatherItems;
+  }
+};
 
-// Making the API request using fetch, promises, and arrow functions
-fetch(apiUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
+// Possible continuation of code??
+const temperature = 75; // Replace with the actual temperature
+const clothingList = determineWeatherCategory(temperature);
+console.log('Recommended Clothing:', clothingList);
+
+
+
+
+
+//const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
+//const city = prompt('Enter the city name:'); // Prompt the user for the city name
+
+//// Constructing the API URL for the current weather
+//const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+//// Making the API request using fetch, promises, and arrow functions
+//fetch(apiUrl)
+ // .then(response => {
+ //   if (!response.ok) {
+ //     throw new Error(`HTTP error! Status: ${response.status}`);
+ //  }
+ //   return response.json();
+// })
     
-// Logging latitude and longitude for each day to the console using arrow functions
-    .then(data => {
-        console.log(data.coord.lat)
-        console.log(data.coord.lon)
+//// Logging latitude and longitude for each day to the console using arrow functions
+ //   .then(data => {
+ //       console.log(data.coord.lat)
+ //       console.log(data.coord.lon)
 
-  })
-  .catch(error => {
-    console.error('Error fetching data from OpenWeather API:', error);
-  });
+ // })
+ //.catch(error => {
+ //   console.error('Error fetching data from OpenWeather API:', error);
+ // });
 
 
 
