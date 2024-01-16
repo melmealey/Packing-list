@@ -1,6 +1,6 @@
 const hotWeatherItems = ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'];
 const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'tennis shoes', 'ankle socks'];
-const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'jeans', 'sweater'];
+const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks' 'jeans', 'sweater'];
 
 const determineWeatherCategory = temp => {
   if (temp >= 80) {
