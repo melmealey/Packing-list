@@ -1,13 +1,29 @@
 const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
 const city = prompt('Enter the city name:'); // Prompt the user for the city name
 const inputElement = document.getElementById('myInput'); // Naming variable to log input box to console TJ
+const submitBtn = document.getElementById('submitBtn') 
 
-inputElement.addEventListener('input', function(event) {
+
+inputElement.addEventListener('input', function(event) {  //console logging the contents of the input box. Need to figure out how to log string appose to each letter
   const value = event.target.value;
-  console.log(value);
+  console.log(value)
 })
 
+submitBtn.addEventListener('click', function() {
+  console.log('Submit button clicked')
+})
 
+// Issue number 1
+document.querySelector('form').addEventListener('submit', function(event) {
+  event.preventDefault();  // Prevents the form from submitting and refeshing the page
+
+  var inputValue = document.getElementById('myInput').value;  //grabbing the input value
+
+  var outputElement = document.getElementById('output');  //add input value to page
+  outputElement.textContent = inputValue;
+
+  document.getElementById('myInput').value = '';  //clear the input field
+})
 
 // Constructing the API URL for the current weather
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
