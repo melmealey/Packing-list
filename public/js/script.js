@@ -1,6 +1,30 @@
-    const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
-    const city = prompt('Enter a city name to view the current temperature:');
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
+const city = prompt('Enter the city name:'); // Prompt the user for the city name
+const inputElement = document.getElementById('myInput'); // Naming variable to log input box to console TJ
+const submitBtn = document.getElementById('submitBtn') 
+
+submitBtn.addEventListener('click', function() {
+  console.log(inputElement.value)
+
+  var inputValue = document.getElementById('myInput').value;  //grabbing the input value
+
+  var outputElement = document.getElementById('output');  //add input value to page
+  outputElement.textContent = inputValue;
+
+  document.getElementById('myInput').value = '';  //clear the input field
+})
+
+// Constructing the API URL for the current weather
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+// Making the API request using fetch, promises, and arrow functions
+fetch(apiUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
     
     fetch(apiUrl)
       .then(response => {

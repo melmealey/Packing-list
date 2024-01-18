@@ -1,3 +1,3 @@
-const Trip = require('./Trip');
+const List = require('./List');
 
-module.exports = { Trip };
+module.exports = { List };
