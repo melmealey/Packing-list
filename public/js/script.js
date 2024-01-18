@@ -37,34 +37,26 @@ fetch(apiUrl)
     return response.json();
   })
     
-// Logging latitude and longitude for each day to the console using arrow functions
-    .then(data => {
-        console.log(data.coord.lat)
-        console.log(data.coord.lon)
-
-  })
-  .catch(error => {
-    console.error('Error fetching data from OpenWeather API:', error);
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(async (data) => {
+        const lat = data.coord.lat;
+        const lon = data.coord.lon;
+        const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+        const response = await fetch(url);
+        const tempData = await response.json();
+        const temperatureElement = document.getElementById('temperature');
+        console.log(tempData.list[0].main.temp);
+        temperatureElement.textContent = Math.round(tempData.list[0].main.temp) + ' °F';
+      })
+      .catch(error => {
+        console.error('Error fetching data from OpenWeather API:', error);
+      });
 
 
 
