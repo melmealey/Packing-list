@@ -87,60 +87,6 @@ const weatherItems = {
 
 
 
- //PACKING-LIST ISSUE #10 MAKE POST REQUEST-CRYSTAL
- const weatherItems = {
-  hot: ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'],
-  moderate: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'],
-  cold: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks' 'Jeans', 'Sweater'],
-};
-
-const selectedItems = [];
-
-const updateSelectedItems = () => {
-  selectedItems.length = 0;
-
-  // User checks hot weather items
-  if ($('#hotCheckbox').prop('checked')) {
-    selectedItems.push(...weatherItems.hot);
-  }
-
-  // User checks moderate weather items
-  if ($('#moderateCheckbox').prop('checked')) {
-    selectedItems.push(...weatherItems.moderate);
-  }
-
-  // User checks cold weather items
-  if ($('#coldCheckbox').prop('checked')) {
-    selectedItems.push(...weatherItems.cold);
-  }
-};
-
-const sendSelectedItemsToServer = async () => {
-  updateSelectedItems();
-
-  if (selectedItems.length === 0) {
-    console.log('No items selected to send.');
-    return;
-  }
-
-  const response = await fetch('your_server_endpoint', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ selectedItems }),
-  });
-
-  if (!response.ok) {
-    console.error('Error sending selected items to the server:', response.status);
-    return;
-  }
-
-  console.log('Selected items successfully sent to the server.');
-};  
-
-// We need to update the checkbox ID's depending on HTML code. Placeholders added for checkboxes with HTML IDs: hotCheckbox, moderateCheckbox, coldCheckbox 
-$('#addButton').on('click', sendSelectedItemsToServer);
 
 
 
