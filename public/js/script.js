@@ -1,5 +1,5 @@
 const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
-const city = prompt('Enter the city name:'); // Prompt the user for the city name
+const city = prompt('Need help with your packing list? What city are you headed to?'); // Prompt the user for the city name
 const inputElement = document.getElementById('myInput'); // Naming variable to log input box to console TJ
 const submitBtn = document.getElementById('submitBtn') 
 
