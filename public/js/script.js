@@ -61,10 +61,10 @@ fetch(apiUrl)
  */
 
 
-// const postTrips = async(tripObj) => {
-//     const response = await fetch('/api/trips', {
+// const postLists = async(listObj) => {
+//     const response = await fetch('/api/lists', {
 //         method: 'POST',
-//         body: JSON.stringify(tripObj),
+//         body: JSON.stringify(listObj),
 //         headers: {
 //             'Content-Type': 'application/json',
 //         }
@@ -75,25 +75,25 @@ fetch(apiUrl)
 //     console.log(data)
 // }
 
-// const newTrip = {
+// const newList = {
 //     name: 'pretty cool mountain adventure',
 //     description: 'more than okay!!!'
 // }
 
-// postTrips(newTrip)
+// postLists(newList)
 
 /**
  * Uncomment the below code to GET data from the database
  */
 
 
-// const getTrips = async() => {
-//     const response = await fetch('/api/trips')
+// const getLists = async() => {
+//     const response = await fetch('/api/lists')
 //     const data = await response.json()
 //     console.log(data)
 // }
 
-// getTrips()
+// getLists()
 
 
 /**
@@ -101,8 +101,8 @@ fetch(apiUrl)
  */
 
 
-// const deleteTrips = async(id) => {
-//    const response = await fetch(`/api/trips/{id}`, {
+// const deleteLists = async(id) => {
+//    const response = await fetch(`/api/lists/{id}`, {
 //         method: 'DELETE',
 //         headers: {
 //             'Content-Type': 'application/json',
@@ -112,23 +112,23 @@ fetch(apiUrl)
 //     console.log(data)
 // }
 
-// deleteTrip(1)
+// deleteList(1)
 
 
 /**
  * Uncomment the below code to Update data in the database
  */
 
-// const newTrip = {
+// const newList = {
 //     name: 'pretty cool mountain adventure',
 //     description: 'WAY WAY more than okay!!!'
 // }
 
 
-// const updateTrip = async(id, newTripObj) => {
-//    const response = await fetch(`/api/trips/{id}`, {
+// const updateList = async(id, newListObj) => {
+//    const response = await fetch(`/api/lists/{id}`, {
 //         method: 'PUT',
-//         body: JSON.stringify(newTripObj),
+//         body: JSON.stringify(newListObj),
 //         headers: {
 //             'Content-Type': 'application/json',
 //         }
@@ -137,4 +137,4 @@ fetch(apiUrl)
 //     console.log(data)
 // }
 
-// updateTrip(1, newTrip)
+// updateList(1, newList)
