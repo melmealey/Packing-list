@@ -100,6 +100,14 @@ fetch(apiUrl)
         }
         return response.json();
       })
+
+      fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(async (data) => {
         const lat = data.coord.lat;
         const lon = data.coord.lon;
@@ -113,6 +121,13 @@ fetch(apiUrl)
       .catch(error => {
         console.error('Error fetching data from OpenWeather API:', error);
       });
+
+
+
+
+
+
+
 /**
  * Uncomment the below code to POST data to the database
  */
