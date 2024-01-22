@@ -133,19 +133,19 @@ fetch(apiUrl)
  */
 
 
-// const postLists = async(listObj) => {
-//     const response = await fetch('/api/lists', {
-//         method: 'POST',
-//         body: JSON.stringify(listObj),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         }
-//     })
+const postLists = async(listObj) => {
+    const response = await fetch('/api/lists', {
+        method: 'POST',
+        body: JSON.stringify(listObj),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
 
-//     const data = await response.json()
+    const data = await response.json()
 
-//     console.log(data)
-// }
+    console.log(data)
+}
 
 // const newList = {
 //     name: 'pretty cool mountain adventure',
