@@ -1,4 +1,4 @@
-body {
+/* body {
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -6,7 +6,18 @@ body {
     align-items: center;
     justify-content: center;
     background-size: cover;
-    background-image: url("https://www.usnews.com/cmsmedia/97/bd/4151257142eaa4ee750ba02b0376/170619-affordabledestinationscomposite-stock.jpg");
+    background-image: url(background.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("notebook_paper.jpg");
     background-size: cover;
 }
