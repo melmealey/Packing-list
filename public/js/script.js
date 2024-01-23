@@ -5,6 +5,7 @@ const inputElement = document.getElementById('myInput');
 const submitBtn = document.getElementById('submitBtn')
 const cityInput = document.getElementById('city');
 const cityButton = document.getElementById('city-button')
+
 cityButton.addEventListener('click', function () {
   const city = cityInput.value
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
@@ -28,8 +29,17 @@ cityButton.addEventListener('click', function () {
   .catch(error => {
     console.error('Error fetching data from OpenWeather API:', error);
   });
-
 })
+
+function handleCheckboxChange() {
+  if (document.getElementById("myCheckbox").checked) {
+    console.log("Checkbox is checked");
+  } else {
+    console.log("checkbox is unchecked")
+  }
+}
+
+document.getElementById("myCheckout").addEventListener("chnage", handleCheckboxChange);
 
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
@@ -41,7 +51,6 @@ submitBtn.addEventListener('click', function () {
 
   document.getElementById('myInput').value = '';
 })
-
 
 //PACKING-LIST ISSUE #5 DETERMINE PACKING LIST-CRYSTAL
 const hotWeatherItems = ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'];
