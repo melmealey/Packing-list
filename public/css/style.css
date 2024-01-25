@@ -1,12 +1,9 @@
-/* body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
+    /* background-image: url("background.jpg"); */
     background-size: cover;
-    background-image: url("background.jpg");
+    background-position: center;
     background-repeat: no-repeat;
-} */
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.141);
+    background: linear-gradient(to bottom, #ffcc00, #ff6600)
+}

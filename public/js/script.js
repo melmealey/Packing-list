@@ -1,6 +1,5 @@
 //PACKING-LIST ISSUE #2 GET CITY INFO-CRYSTAL
 const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
-
 const inputElement = document.getElementById('myInput');
 const submitBtn = document.getElementById('submitBtn')
 const cityInput = document.getElementById('city');
@@ -10,25 +9,25 @@ cityButton.addEventListener('click', function () {
   const city = cityInput.value
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
   fetch(apiUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(async (data) => {
-    const lat = data.coord.lat;
-    const lon = data.coord.lon;
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-    const response = await fetch(url);
-    const tempData = await response.json();
-    const temperatureElement = document.getElementById('temperature');
-    console.log(tempData.list[0].main.temp);
-    temperatureElement.textContent = Math.round(tempData.list[0].main.temp) + ' °F';
-  })
-  .catch(error => {
-    console.error('Error fetching data from OpenWeather API:', error);
-  });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(async (data) => {
+      const lat = data.coord.lat;
+      const lon = data.coord.lon;
+      const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+      const response = await fetch(url);
+      const tempData = await response.json();
+      const temperatureElement = document.getElementById('temperature');
+      console.log(tempData.list[0].main.temp);
+      temperatureElement.textContent = Math.round(tempData.list[0].main.temp) + ' °F';
+    })
+    .catch(error => {
+      console.error('Error fetching data from OpenWeather API:', error);
+    });
 })
 
 function handleCheckboxChange() {
@@ -39,7 +38,7 @@ function handleCheckboxChange() {
   }
 }
 
-document.getElementById("myCheckout").addEventListener("chnage", handleCheckboxChange);
+document.getElementById("myCheckout").addEventListener("change", handleCheckboxChange);
 
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
