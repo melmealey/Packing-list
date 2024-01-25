@@ -1,5 +1,6 @@
-//Variables
+//PACKING-LIST ISSUE #2 GET CITY INFO-CRYSTAL
 const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
+const city = prompt('Enter the city name:'); // Prompt the user for the city name
 const inputElement = document.getElementById('myInput');
 const submitBtn = document.getElementById('submitBtn')
 
