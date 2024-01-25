@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Trip extends Model {}
+class List extends Model {}
 
-Trip.init(
+List.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,12 +11,9 @@ Trip.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    itemName: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
     },
     date_created: {
       type: DataTypes.DATE,
@@ -33,4 +30,4 @@ Trip.init(
   }
 );
 
-module.exports = Trip;
+module.exports = List;
