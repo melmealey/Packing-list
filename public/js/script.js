@@ -102,20 +102,56 @@ cityBtn.addEventListener('click', function () {
       console.error('Error fetching data from OpenWeather API:', error);
     });
 })
-/**
- * Uncomment the below code to POST data to the database
- */
-// const postLists = async(listObj) => {
-//     const response = await fetch('/api/lists', {
-//         method: 'POST',
-//         body: JSON.stringify(listObj),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         }
-//     })
-//     const data = await response.json()
-//     console.log(data)
+
+
+//Issue #10?
+const finalizeListBtn = document.getElementById('finalizeListBtn'); // Replace 'finalizeListBtn' with the actual ID of your button
+
+finalizeListBtn.addEventListener('click', async () => {
+  try {
+    // Creating objects from the arrays 
+    const hotListObj = { category: 'hot', items: ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'] };
+    const moderateListObj = { category: 'moderate', items: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'] };
+    const coldListObj = { category: 'cold', items: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'] };
+
+    // Make post requests for each list
+    await postLists(hotListObj);
+    await postLists(moderateListObj);
+    await postLists(coldListObj);
+
+    // Retrieve and display the lists under the "My Packing List" heading
+    // We may need another function to fetch and display the lists?
+
+    // Example: Fetch and display the lists
+    const hotList = await fetch('/api/lists?category=hot');
+    const moderateList = await fetch('/api/lists?category=moderate');
+    const coldList = await fetch('/api/lists?category=cold');
+
+    // Assuming you have a function displayList that displays the lists in the UI
+    displayList(await hotList.json(), 'Hot Weather List');
+    displayList(await moderateList.json(), 'Moderate Weather List');
+    displayList(await coldList.json(), 'Cold Weather List');
+  } catch (error) {
+    console.error('Error finalizing list:', error);
+  }
+});
+
+
+
+// const postLists = async (listObj) => {
+//   const response = await fetch('/api/lists', {
+//     method: 'POST',
+//     body: JSON.stringify(listObj),
+//     headers: {
+//       'Content-Type': 'application/json',
+//     }
+//   })
+//   const data = await response.json()
+//   console.log(data)
 // }
+
+
+
 // const newList = {
 //     name: 'pretty cool mountain adventure',
 //     description: 'more than okay!!!'
