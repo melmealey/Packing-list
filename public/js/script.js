@@ -216,12 +216,12 @@ const updatePackingList = (temperature) => {
 /**
  * Uncomment the below code to GET data from the database
  */
-// const getLists = async() => {
-//     const response = await fetch('/api/lists')
-//     const data = await response.json()
-//     console.log(data)
-// }
-// getLists()
+const getLists = async(myInput) => {
+    const response = await fetch('/api/lists')
+    const data = await response.json()
+    console.log(data)
+}
+getLists()
 /**
  * Uncomment the below code to DELETE data from the database
  */
