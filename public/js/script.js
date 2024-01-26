@@ -8,6 +8,7 @@ const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks',
 const cityBtn = document.getElementById('city-button')
 const cityInput = document.getElementById('city')
 
+
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
   var inputValue = document.getElementById('myInput').value;
@@ -49,6 +50,43 @@ cityBtn.addEventListener('click', function () {
         moderate: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'],
         cold: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'],
       };
+
+      Object.keys(weatherItems).forEach((weather) => {
+        console.log(`Clothing items for ${weather} weather:`);
+
+        
+        weatherItems[weather].forEach((item) => {
+          console.log(item);
+        });
+      });
+
+      submitBtn.addEventListener('click', function () {
+        const finalizeButton = document.getElementById('finalize-button');
+        button.textContent = submitBtn;
+        button.addEventListener('click', () => {
+          getDetermineWeatherCategory();
+        });
+      });
+
+      function getDetermineWeatherCategory() {
+        fetch('https://api.example.com/weather-category', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Handle the response data
+            console.log(data);
+          })
+          .catch(error => {
+            // Handle any errors
+            console.error(error);
+          });
+      }
+      
+
       const updatePackingList = (temperature) => {
         // Determine the weather category based on the temperature
         const weatherCategory = determineWeatherCategory(temperature);
@@ -104,7 +142,6 @@ cityBtn.addEventListener('click', function () {
     });
 })
 
-
 fetch(apiUrl)
   .then(response => {
     if (!response.ok) {
@@ -121,72 +158,72 @@ fetch(apiUrl)
     const temperatureElement = document.getElementById('temperature');
     console.log(tempData.list[0].main.temp);
     temperatureElement.textContent = Math.round(tempData.list[0].main.temp) + ' °F';
-const determineWeatherCategory = temp => {
-  if (temp >= 70) {
-    return Object.values(weatherItems.hot);
-  } else if (temp >= 51 && temp <= 69) {
-    return Object.values(weatherItems.moderate);
-  } else {
-    return Object.values(weatherItems.cold);
-  }
-};
-
-const weatherItems = {
-  hot: ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'],
-  moderate: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'],
-  cold: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'],
-};
-const updatePackingList = (temperature) => {
-  // Determine the weather category based on the temperature
-  const weatherCategory = determineWeatherCategory(temperature);
-  // Clear the previous packing list
-  const outputID = document.querySelector("#output");
-  outputID.innerHTML = '';
-  // Create a separate div for each weather category
-  Object.entries(weatherItems).forEach(([category, items]) => {
-    const categoryDiv = document.createElement("div");
-    // Create a checkbox for the weather category
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = `${category}Checkbox`;
-    checkbox.checked = true; // Set the checkbox to checked by default
-
-    // Create a label for the weather category
-    const label = document.createElement("label");
-    label.htmlFor = `${category}Checkbox`;
-    label.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-
-    // Create a separate div for the packing list items
-    const itemsDiv = document.createElement("div");
-    itemsDiv.classList.add("items");
-    // Filter the items based on the weather category and temperature
-    const filteredItems = items.filter(item => {
-      if (category === "hot" && temperature < 70) {
-        return false; // Skip hot weather items if temperature is below 70
+    const determineWeatherCategory = temp => {
+      if (temp >= 70) {
+        return Object.values(weatherItems.hot);
+      } else if (temp >= 51 && temp <= 69) {
+        return Object.values(weatherItems.moderate);
+      } else {
+        return Object.values(weatherItems.cold);
       }
-      return weatherCategory.includes(item);
-    });
+    };
 
-    // Create a checkbox for each item
-    filteredItems.forEach(item => {
-      const itemCheckbox = document.createElement("input");
-      itemCheckbox.type = "checkbox";
-      itemCheckbox.id = item;
-      itemCheckbox.checked = true; // Set the checkbox to checked by default
-      itemsDiv.appendChild(itemCheckbox);
+    const weatherItems = {
+      hot: ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'],
+      moderate: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'],
+      cold: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'],
+    };
+    const updatePackingList = (temperature) => {
+      // Determine the weather category based on the temperature
+      const weatherCategory = determineWeatherCategory(temperature);
+      // Clear the previous packing list
+      const outputID = document.querySelector("#output");
+      outputID.innerHTML = '';
+      // Create a separate div for each weather category
+      Object.entries(weatherItems).forEach(([category, items]) => {
+        const categoryDiv = document.createElement("div");
+        // Create a checkbox for the weather category
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `${category}Checkbox`;
+        checkbox.checked = true; // Set the checkbox to checked by default
 
-      // Create a label for each item in the array
-      const itemLabel = document.createElement("label");
-      itemLabel.htmlFor = item;
-      itemLabel.textContent = item;
-      itemsDiv.appendChild(itemLabel);
-    });
-    // Append the items div to the category div
-    categoryDiv.appendChild(itemsDiv);
-    // Append the category div to the output div
-    outputID.appendChild(categoryDiv);
-  });
-};
+        // Create a label for the weather category
+        const label = document.createElement("label");
+        label.htmlFor = `${category}Checkbox`;
+        label.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+
+        // Create a separate div for the packing list items
+        const itemsDiv = document.createElement("div");
+        itemsDiv.classList.add("items");
+        // Filter the items based on the weather category and temperature
+        const filteredItems = items.filter(item => {
+          if (category === "hot" && temperature < 70) {
+            return false; // Skip hot weather items if temperature is below 70
+          }
+          return weatherCategory.includes(item);
+        });
+
+        // Create a checkbox for each item
+        filteredItems.forEach(item => {
+          const itemCheckbox = document.createElement("input");
+          itemCheckbox.type = "checkbox";
+          itemCheckbox.id = item;
+          itemCheckbox.checked = true; // Set the checkbox to checked by default
+          itemsDiv.appendChild(itemCheckbox);
+
+          // Create a label for each item in the array
+          const itemLabel = document.createElement("label");
+          itemLabel.htmlFor = item;
+          itemLabel.textContent = item;
+          itemsDiv.appendChild(itemLabel);
+        });
+        // Append the items div to the category div
+        categoryDiv.appendChild(itemsDiv);
+        // Append the category div to the output div
+        outputID.appendChild(categoryDiv);
+      });
+    };
     // Call the updatePackingList function with the temperature
     updatePackingList(tempData.list[0].main.temp);
   })
@@ -216,12 +253,15 @@ const updatePackingList = (temperature) => {
 /**
  * Uncomment the below code to GET data from the database
  */
-const getLists = async(myInput) => {
-    const response = await fetch('/api/lists')
-    const data = await response.json()
-    console.log(data)
+const getLists = async (myInput) => {
+
+  const response = await fetch('/api/lists')
+  const data = await response.json()
+  console.log(data)
 }
 getLists()
+
+
 /**
  * Uncomment the below code to DELETE data from the database
  */
