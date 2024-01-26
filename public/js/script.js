@@ -38,7 +38,7 @@ function handleCheckboxChange() {
   }
 }
 
-document.getElementById("myCheckout").addEventListener("change", handleCheckboxChange);
+// document.getElementById("myCheckout").addEventListener("change", handleCheckboxChange);
 
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
