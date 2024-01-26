@@ -62,8 +62,8 @@ cityBtn.addEventListener('click', function () {
 
       submitBtn.addEventListener('click', function () {
         const finalizeButton = document.getElementById('finalize-button');
-        button.textContent = submitBtn;
-        button.addEventListener('click', () => {
+        finalizeButton.textContent = submitBtn.textContent;
+        finalizeButton.addEventListener('click', () => {
           getDetermineWeatherCategory();
         });
       });
