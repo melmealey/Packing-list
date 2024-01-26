@@ -102,20 +102,19 @@ cityBtn.addEventListener('click', function () {
       console.error('Error fetching data from OpenWeather API:', error);
     });
 })
-/**
- * Uncomment the below code to POST data to the database
- */
-// const postLists = async(listObj) => {
-//     const response = await fetch('/api/lists', {
-//         method: 'POST',
-//         body: JSON.stringify(listObj),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         }
-//     })
-//     const data = await response.json()
-//     console.log(data)
-// }
+
+const postLists = async (listObj) => {
+  const response = await fetch('/api/lists', {
+    method: 'POST',
+    body: JSON.stringify(listObj),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+  const data = await response.json()
+  console.log(data)
+}
+
 // const newList = {
 //     name: 'pretty cool mountain adventure',
 //     description: 'more than okay!!!'
