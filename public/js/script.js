@@ -38,7 +38,7 @@ function handleCheckboxChange() {
   }
 }
 
-document.getElementById("myCheckout").addEventListener("change", handleCheckboxChange);
+// document.getElementById("myCheckout").addEventListener("change", handleCheckboxChange);
 
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
@@ -55,13 +55,8 @@ submitBtn.addEventListener('click', function () {
 const hotWeatherItems = ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'];
 const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'];
 const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Jeans', 'Sweater'];
-const city = prompt('Enter the city name:');
-const inputElement = document.getElementById('myInput');
-const submitBtn = document.getElementById('submitBtn')
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-const hotWeatherItems = ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'];
-const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'];
-const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'];
+
+
 
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
@@ -109,11 +104,6 @@ const weatherItems = {
   cold: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Jeans', 'Sweater'],
 };
 
-const weatherItems = {
-  hot: ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'],
-  moderate: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'],
-  cold: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'],
-};
 const updatePackingList = (temperature) => {
   // Determine the weather category based on the temperature
   const weatherCategory = determineWeatherCategory(temperature);
