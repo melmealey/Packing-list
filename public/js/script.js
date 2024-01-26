@@ -8,6 +8,7 @@ const cityButton = document.getElementById('city-button')
 cityButton.addEventListener('click', function () {
   const city = cityInput.value
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+  
   fetch(apiUrl)
     .then(response => {
       if (!response.ok) {
@@ -66,32 +67,32 @@ submitBtn.addEventListener('click', function () {
   document.getElementById('myInput').value = '';
 })
 
-fetch(apiUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(async (data) => {
-    const lat = data.coord.lat;
-    const lon = data.coord.lon;
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-    const response = await fetch(url);
-    const tempData = await response.json();
-    const temperatureElement = document.getElementById('temperature');
-    console.log(tempData.list[0].main.temp);
-    temperatureElement.textContent = Math.round(tempData.list[0].main.temp) + ' °F';
+// fetch(apiUrl)
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+//     return response.json();
+//   })
+//   .then(async (data) => {
+//     const lat = data.coord.lat;
+//     const lon = data.coord.lon;
+//     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+//     const response = await fetch(url);
+//     const tempData = await response.json();
+//     const temperatureElement = document.getElementById('temperature');
+//     console.log(tempData.list[0].main.temp);
+//     temperatureElement.textContent = Math.round(tempData.list[0].main.temp) + ' °F';
   
-const determineWeatherCategory = temp => {
-  if (temp >= 70) {
-    return Object.values(weatherItems.hot);
-  } else if (temp >= 51 && temp <= 69) {
-    return Object.values(weatherItems.moderate);
-  } else {
-    return Object.values(weatherItems.cold);
-  }
-};
+// const determineWeatherCategory = temp => {
+//   if (temp >= 70) {
+//     return Object.values(weatherItems.hot);
+//   } else if (temp >= 51 && temp <= 69) {
+//     return Object.values(weatherItems.moderate);
+//   } else {
+//     return Object.values(weatherItems.cold);
+//   }
+// };
 
 //const temperature = 75;  //Replace with the actual temperature
 const clothingList = determineWeatherCategory(temperature);
