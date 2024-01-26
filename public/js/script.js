@@ -1,15 +1,13 @@
-//PACKING-LIST ISSUE #2 GET CITY INFO-CRYSTAL
+//Variables
 const apiKey = 'd5ca5c8780f73fd2cdcd83ac1d6cb2da';
-const city = prompt('Enter the city name:'); // Prompt the user for the city name
 const inputElement = document.getElementById('myInput');
 const submitBtn = document.getElementById('submitBtn')
-
 const hotWeatherItems = ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'];
 const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'];
 const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'];
-
 const cityBtn = document.getElementById('city-button')
 const cityInput = document.getElementById('city')
+
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
   var inputValue = document.getElementById('myInput').value;
@@ -20,7 +18,6 @@ submitBtn.addEventListener('click', function () {
 cityBtn.addEventListener('click', function () {
   const city = cityInput.value
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-
   fetch(apiUrl)
     .then(response => {
       if (!response.ok) {
@@ -105,7 +102,6 @@ cityBtn.addEventListener('click', function () {
       console.error('Error fetching data from OpenWeather API:', error);
     });
 })
-  
 /**
  * Uncomment the below code to POST data to the database
  */
