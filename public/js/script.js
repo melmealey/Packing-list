@@ -7,6 +7,7 @@ const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ank
 const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'];
 const cityBtn = document.getElementById('city-button')
 const cityInput = document.getElementById('city')
+const destination = document.getElementById('destination')
 
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
@@ -16,8 +17,10 @@ submitBtn.addEventListener('click', function () {
   document.getElementById('myInput').value = '';
 })
 
-cityBtn.addEventListener('click', function () {
+destination.addEventListener('submit', function (event) {
+  event.preventDefault()
   const city = cityInput.value
+  alert(city)
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
   fetch(apiUrl)
     .then(response => {
