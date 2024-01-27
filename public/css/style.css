@@ -1,11 +1,11 @@
 body {
+    /* background-image: url("background.jpg"); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: rgba(0, 0, 0, 0.141);
-    background: linear-gradient(to bottom, #adb60b9b, #19770184, #00007988)
-
+    background: linear-gradient(to bottom, #8101018f, #19770184, #00007988)
 }
 
 h1 {
