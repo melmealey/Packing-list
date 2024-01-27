@@ -8,7 +8,6 @@ const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks',
 const cityBtn = document.getElementById('city-button')
 const cityInput = document.getElementById('city')
 
-
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
   var inputValue = document.getElementById('myInput').value;
@@ -142,7 +141,6 @@ cityBtn.addEventListener('click', function () {
     });
 })
 
-<<<<<<< HEAD
 fetch(apiUrl)
   .then(response => {
     if (!response.ok) {
@@ -245,7 +243,6 @@ fetch(apiUrl)
 //     })
 //     const data = await response.json()
 //     console.log(data)
-=======
 
 //Issue #10?
 const finalizeListBtn = document.getElementById('finalizeListBtn'); // Replace 'finalizeListBtn' with the actual ID of your button
@@ -291,7 +288,6 @@ finalizeListBtn.addEventListener('click', async () => {
 //   })
 //   const data = await response.json()
 //   console.log(data)
->>>>>>> c4add1922a781f2aa1c0a240c531669813e5d26b
 // }
 
 
