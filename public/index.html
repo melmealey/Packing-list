@@ -3,32 +3,72 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="./js/script.js" defer></script>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Document</title>
-
-<body>
-    <!--<div class= "columns">
-        <div class="column">1</div>
-        <div class="column">2</div>
-        <div class="column">3</div>
-        <div class="column">4</div>
-        <div class="column">5</div>
-      </div>-->
-    <h1>The Ultimate Vacation Packing List</h1>
-    <input type="text" id="city" placeholder="Choose your Vacation City"/>
-    <button id="city-button">Destination</button>
-    <h2>The current temperature for your travel destination is: </h2>
-    <span id="temperature"></span>
-    <button id="submitBtn">Add Item</button>
-    <input type="checkbox" id="myCheckbox">
-    <label for="myCheckbox">Keep Item</label>
-    <input type="text" id="myInput" placeholder="Add an Item">
-    <div id="output"></div>
-    <div id="form"></div>
-    <button id="finalize-button">Finalize List</button>
-</body>
 </html>
 
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                <h1>The Ultimate Vacation Packing List</h1>
+            </h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <p class="title">How it works</p>
+                        <p>This website will help you to make the ultimate packing list for all of your travel
+                            destinations. There are curretnly 3 different types of weather saved. Hot weather, moderate
+                            weather and cold weather. Depending on the current temperature of the city entered, a
+                            packing list will populate to the page.</p>
+                    </div>
+                </div>
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <p class="title">What City do you plan to vacation in?</p>
+                        <p> <input type="text" id="city" placeholder="Choose your Vacation City" />
+                            <button id="city-button">Destination</button>
+                        <h2>The current temperature for your travel destination is: </h2>
+                        <span id="temperature"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <p class="title">Suggested Packing List
+                            <input type="text" id="myInput" placeholder="Add an Item">
+                            <button id="submitBtn">Submit</button>
+                            <label for="myCheckbox">Keep Item</label>
+                            <input type="checkbox" id="myCheckbox">
+                        <div id="output"></div>
+                        <div id="form"></div>
+                        </p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <p class="title">Finalized Packing List</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio sint a tempora placeat veniam sit aliquid quo? Vero, non! Corrupti exercitationem iure ducimus laborum quae consequuntur dolor reprehenderit repellendus quia.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+        <p>Hope this Helps!</p>
+        </div>
+    </footer>
+
+</html>
