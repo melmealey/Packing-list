@@ -1,6 +1,6 @@
 # Packing-list
 
-<Screenshot for page goes here>
+<Screenshot of page goes here>
 
 
 # Description
@@ -22,3 +22,7 @@ Worked with teammates, tutors and XPERT Learning Assistant.
 
 # License
 Please refer to the LICENSE in the repo. 
+
+https://packing-list.onrender.com
+
+https://github.com/melmealey/Packing-list
