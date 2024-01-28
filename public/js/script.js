@@ -303,13 +303,13 @@ finalizeListBtn.addEventListener('click', async () => {
 /**
  * Uncomment the below code to GET data from the database
  */
-// const getLists = async (myInput) => {
+const getLists = async (myInput) => {
 
-//   const response = await fetch('/api/lists')
-//   const data = await response.json()
-//   console.log(data)
-// }
-// getLists()
+  const response = await fetch('/api/lists')
+  const data = await response.json()
+  console.log(data)
+}
+getLists()
 
 
 /**
