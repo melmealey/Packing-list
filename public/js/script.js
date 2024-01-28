@@ -217,6 +217,7 @@ fetch(apiUrl)
 /**
 * Uncomment the below code to POST data to the database
 */
+
 // const postLists = async(listObj) => {
 //     const response = await fetch('/api/lists', {
 //         method: 'POST',
@@ -270,13 +271,15 @@ finalizeListBtn.addEventListener('click', async () => {
 // }
 // postLists(newList)
 /**
-* Uncomment the below code to GET data from the database
-*/
-const getLists = async (myInput) => {
-  const response = await fetch('/api/lists')
-  const data = await response.json()
-  console.log(data)
+ * Uncomment the below code to GET data from the database
+ */
+
+const getLists = async() => {
+    const response = await fetch('/api/list')
+    const data = await response.json()
+    console.log(data)
 }
+
 getLists()
 /**
 * Uncomment the below code to DELETE data from the database
