@@ -69,68 +69,59 @@ cityBtn.addEventListener('click', function () {
         })
           .then(response => response.json())
           .then(data => {
-            // Handle the response data
             console.log(data);
           })
           .catch(error => {
-            // Handle any errors
             console.error(error);
           });
       }
       const updatePackingList = (temperature) => {
         // Determine the weather category based on the temperature
         const weatherCategory = determineWeatherCategory(temperature);
-        // Clear the previous packing list
         const outputID = document.querySelector("#output");
         outputID.innerHTML = '';
-        // Create a separate div for each weather category
         Object.entries(weatherItems).forEach(([category, items]) => {
           const categoryDiv = document.createElement("div");
-          // Create a checkbox for the weather category
           const checkbox = document.createElement("input");
           checkbox.type = "checkbox";
           checkbox.id = `${category}Checkbox`;
-          checkbox.checked = true; // Set the checkbox to checked by default
-          // Create a label for the weather category
+          checkbox.checked = true;
           const label = document.createElement("label");
           label.htmlFor = `${category}Checkbox`;
           label.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-          // Create a separate div for the packing list items
           const itemsDiv = document.createElement("div");
           itemsDiv.classList.add("items");
-          // Filter the items based on the weather category and temperature
+
           const filteredItems = items.filter(item => {
             if (category === "hot" && temperature < 70) {
-              return false; // Skip hot weather items if temperature is below 70
+              return false; 
             }
             return weatherCategory.includes(item);
           });
-          // Create a checkbox for each item
+        
           filteredItems.forEach(item => {
             const itemCheckbox = document.createElement("input");
             itemCheckbox.type = "checkbox";
             itemCheckbox.id = item;
-            itemCheckbox.checked = true; // Set the checkbox to checked by default
+            itemCheckbox.checked = true;
             itemsDiv.appendChild(itemCheckbox);
-            // Create a label for each item in the array
             const itemLabel = document.createElement("label");
             itemLabel.htmlFor = item;
             itemLabel.textContent = item;
             itemsDiv.appendChild(itemLabel);
           });
-          // Append the items div to the category div
+
           categoryDiv.appendChild(itemsDiv);
-          // Append the category div to the output div
           outputID.appendChild(categoryDiv);
         });
       };
-      // Call the updatePackingList function with the temperature
       updatePackingList(tempData.list[0].main.temp);
     })
     .catch(error => {
       console.error('Error fetching data from OpenWeather API:', error);
     });
 })
+
 fetch(apiUrl)
   .then(response => {
     if (!response.ok) {
@@ -138,6 +129,7 @@ fetch(apiUrl)
     }
     return response.json();
   })
+
   .then(async (data) => {
     const lat = data.coord.lat;
     const lon = data.coord.lon;
@@ -162,15 +154,12 @@ fetch(apiUrl)
       cold: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'],
     };
     const updatePackingList = (temperature) => {
-      // Determine the weather category based on the temperature
       const weatherCategory = determineWeatherCategory(temperature);
-      // Clear the previous packing list
       const outputID = document.querySelector("#output");
       outputID.innerHTML = '';
-      // Create a separate div for each weather category
+
       Object.entries(weatherItems).forEach(([category, items]) => {
         const categoryDiv = document.createElement("div");
-        // Create a checkbox for the weather category
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.id = `${category}Checkbox`;
@@ -274,10 +263,10 @@ finalizeListBtn.addEventListener('click', async () => {
  * Uncomment the below code to GET data from the database
  */
 
-const getLists = async() => {
-    const response = await fetch('/api/list')
-    const data = await response.json()
-    console.log(data)
+const getLists = async () => {
+  const response = await fetch('/api/list')
+  const data = await response.json()
+  console.log(data)
 }
 
 getLists()
