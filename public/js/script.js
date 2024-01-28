@@ -7,8 +7,6 @@ const moderateWeatherItems = ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ank
 const coldWeatherItems = ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'];
 const cityBtn = document.getElementById('city-button')
 const cityInput = document.getElementById('city')
-const destination = document.getElementById('destination')
-
 submitBtn.addEventListener('click', function () {
   console.log(inputElement.value)
   var inputValue = document.getElementById('myInput').value;
@@ -16,11 +14,8 @@ submitBtn.addEventListener('click', function () {
   outputElement.textContent = inputValue;
   document.getElementById('myInput').value = '';
 })
-
-destination.addEventListener('submit', function (event) {
-  event.preventDefault()
+cityBtn.addEventListener('click', function () {
   const city = cityInput.value
-  alert(city)
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
   fetch(apiUrl)
     .then(response => {
@@ -52,16 +47,12 @@ destination.addEventListener('submit', function (event) {
         moderate: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'],
         cold: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'],
       };
-
       Object.keys(weatherItems).forEach((weather) => {
         console.log(`Clothing items for ${weather} weather:`);
-
-        
         weatherItems[weather].forEach((item) => {
           console.log(item);
         });
       });
-
       submitBtn.addEventListener('click', function () {
         const finalizeButton = document.getElementById('finalize-button');
         finalizeButton.textContent = submitBtn.textContent;
@@ -69,7 +60,6 @@ destination.addEventListener('submit', function (event) {
           getDetermineWeatherCategory();
         });
       });
-
       function getDetermineWeatherCategory() {
         fetch('https://api.example.com/weather-category', {
           method: 'GET',
@@ -87,8 +77,6 @@ destination.addEventListener('submit', function (event) {
             console.error(error);
           });
       }
-      
-
       const updatePackingList = (temperature) => {
         // Determine the weather category based on the temperature
         const weatherCategory = determineWeatherCategory(temperature);
@@ -143,7 +131,6 @@ destination.addEventListener('submit', function (event) {
       console.error('Error fetching data from OpenWeather API:', error);
     });
 })
-
 fetch(apiUrl)
   .then(response => {
     if (!response.ok) {
@@ -169,7 +156,6 @@ fetch(apiUrl)
         return Object.values(weatherItems.cold);
       }
     };
-
     const weatherItems = {
       hot: ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'],
       moderate: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'],
@@ -189,12 +175,10 @@ fetch(apiUrl)
         checkbox.type = "checkbox";
         checkbox.id = `${category}Checkbox`;
         checkbox.checked = true; // Set the checkbox to checked by default
-
         // Create a label for the weather category
         const label = document.createElement("label");
         label.htmlFor = `${category}Checkbox`;
         label.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-
         // Create a separate div for the packing list items
         const itemsDiv = document.createElement("div");
         itemsDiv.classList.add("items");
@@ -205,7 +189,6 @@ fetch(apiUrl)
           }
           return weatherCategory.includes(item);
         });
-
         // Create a checkbox for each item
         filteredItems.forEach(item => {
           const itemCheckbox = document.createElement("input");
@@ -213,7 +196,6 @@ fetch(apiUrl)
           itemCheckbox.id = item;
           itemCheckbox.checked = true; // Set the checkbox to checked by default
           itemsDiv.appendChild(itemCheckbox);
-
           // Create a label for each item in the array
           const itemLabel = document.createElement("label");
           itemLabel.htmlFor = item;
@@ -232,10 +214,9 @@ fetch(apiUrl)
   .catch(error => {
     console.error('Error fetching data from OpenWeather API:', error);
   });
-
 /**
- * Uncomment the below code to POST data to the database
- */
+* Uncomment the below code to POST data to the database
+*/
 // const postLists = async(listObj) => {
 //     const response = await fetch('/api/lists', {
 //         method: 'POST',
@@ -246,30 +227,24 @@ fetch(apiUrl)
 //     })
 //     const data = await response.json()
 //     console.log(data)
-
 //Issue #10?
 const finalizeListBtn = document.getElementById('finalizeListBtn'); // Replace 'finalizeListBtn' with the actual ID of your button
-
 finalizeListBtn.addEventListener('click', async () => {
   try {
-    // Creating objects from the arrays 
+    // Creating objects from the arrays
     const hotListObj = { category: 'hot', items: ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'] };
     const moderateListObj = { category: 'moderate', items: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'] };
     const coldListObj = { category: 'cold', items: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'] };
-
     // Make post requests for each list
     await postLists(hotListObj);
     await postLists(moderateListObj);
     await postLists(coldListObj);
-
     // Retrieve and display the lists under the "My Packing List" heading
     // We may need another function to fetch and display the lists?
-
     // Example: Fetch and display the lists
     const hotList = await fetch('/api/lists?category=hot');
     const moderateList = await fetch('/api/lists?category=moderate');
     const coldList = await fetch('/api/lists?category=cold');
-
     // Assuming you have a function displayList that displays the lists in the UI
     displayList(await hotList.json(), 'Hot Weather List');
     displayList(await moderateList.json(), 'Moderate Weather List');
@@ -278,9 +253,6 @@ finalizeListBtn.addEventListener('click', async () => {
     console.error('Error finalizing list:', error);
   }
 });
-
-
-
 // const postLists = async (listObj) => {
 //   const response = await fetch('/api/lists', {
 //     method: 'POST',
@@ -292,29 +264,23 @@ finalizeListBtn.addEventListener('click', async () => {
 //   const data = await response.json()
 //   console.log(data)
 // }
-
-
-
 // const newList = {
 //     name: 'pretty cool mountain adventure',
 //     description: 'more than okay!!!'
 // }
 // postLists(newList)
 /**
- * Uncomment the below code to GET data from the database
- */
+* Uncomment the below code to GET data from the database
+*/
 const getLists = async (myInput) => {
-
   const response = await fetch('/api/lists')
   const data = await response.json()
   console.log(data)
 }
 getLists()
-
-
 /**
- * Uncomment the below code to DELETE data from the database
- */
+* Uncomment the below code to DELETE data from the database
+*/
 // const deleteLists = async(id) => {
 //    const response = await fetch(`/api/lists/{id}`, {
 //         method: 'DELETE',
@@ -327,8 +293,8 @@ getLists()
 // }
 // deleteList(1)
 /**
- * Uncomment the below code to Update data in the database
- */
+* Uncomment the below code to Update data in the database
+*/
 // const newList = {
 //     name: 'pretty cool mountain adventure',
 //     description: 'WAY WAY more than okay!!!'
