@@ -8,7 +8,7 @@ const cityButton = document.getElementById('city-button')
 cityButton.addEventListener('click', function () {
   const city = cityInput.value
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-  
+
   fetch(apiUrl)
     .then(response => {
       if (!response.ok) {
@@ -67,23 +67,24 @@ submitBtn.addEventListener('click', function () {
   document.getElementById('myInput').value = '';
 })
 
-// fetch(apiUrl)
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-//     return response.json();
-//   })
-//   .then(async (data) => {
-//     const lat = data.coord.lat;
-//     const lon = data.coord.lon;
-//     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-//     const response = await fetch(url);
-//     const tempData = await response.json();
-//     const temperatureElement = document.getElementById('temperature');
-//     console.log(tempData.list[0].main.temp);
-//     temperatureElement.textContent = Math.round(tempData.list[0].main.temp) + ' °F';
-  
+fetch(apiUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(async) (data) => {
+    const lat = data.coord.lat;
+    const lon = data.coord.lon;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+    const response = await fetch(url);
+    const tempData = await response.json();
+    const temperatureElement = document.getElementById('temperature');
+    console.log(tempData.list[0].main.temp);
+    temperatureElement.textContent = Math.round(tempData.list[0].main.temp) + ' °F';
+  };
+
 // const determineWeatherCategory = temp => {
 //   if (temp >= 70) {
 //     return Object.values(weatherItems.hot);
@@ -154,44 +155,45 @@ const updatePackingList = (temperature) => {
     categoryDiv.appendChild(itemsDiv);
     // Append the category div to the output div
     outputID.appendChild(categoryDiv);
+
   });
 };
-    // Call the updatePackingList function with the temperature
+ 
+    //Call the updatePackingList function with the temperature
     updatePackingList(tempData.list[0].main.temp);
-  })
-  .catch(error => {
-    console.error('Error fetching data from OpenWeather API:', error);
-  });
+    
+  .catch (error => {
+  console.error('Error fetching data from OpenWeather API:', error);
+});
 
 let packingList = {};
 
-const updatePackingList = () => {
-  packingList = {};
 
-  // User checks hot weather items
-  if ($('#hotCheckbox').prop('checked')) {
-    packingList.hot = weatherItems.hot;
-  }
 
-  // User checks moderate weather items
-  if ($('#moderateCheckbox').prop('checked')) {
-    packingList.moderate = weatherItems.moderate;
-  }
+// User checks hot weather items
+if ($('#hotCheckbox').prop('checked')) {
+  packingList.hot = weatherItems.hot;
+}
 
-  // User checks cold weather items
-  if ($('#coldCheckbox').prop('checked')) {
-    packingList.cold = weatherItems.cold;
-  }
+// User checks moderate weather items
+if ($('#moderateCheckbox').prop('checked')) {
+  packingList.moderate = weatherItems.moderate;
+}
 
-  console.log('Selected Items:', JSON.stringify(packingList));
-};
+// User checks cold weather items
+if ($('#coldCheckbox').prop('checked')) {
+  packingList.cold = weatherItems.cold;
+}
+
+console.log('Selected Items:', JSON.stringify(packingList));
 
 
 
 
 
 
-  
+
+
 
 /**
  * Uncomment the below code to POST data to the database
