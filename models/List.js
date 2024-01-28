@@ -26,7 +26,7 @@ List.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'trip',
+    modelName: 'list',
   }
 );
 
