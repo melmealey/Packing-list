@@ -233,6 +233,7 @@ fetch(apiUrl)
 /**
  * Uncomment the below code to POST data to the database
  */
+
 // const postLists = async(listObj) => {
 //     const response = await fetch('/api/lists', {
 //         method: 'POST',
@@ -289,6 +290,31 @@ finalizeListBtn.addEventListener('click', async () => {
 //   const data = await response.json()
 //   console.log(data)
 // }
+// ------------------------------------
+// const express = require('express');
+// const router = express.Router();
+// const Item = require('../models/item');
+
+// // POST route for adding new items
+// router.post('/items', async (req, res) => {
+//   try {
+//     // Access the data sent in the request body
+//     const newItemData = req.body;
+
+//     // Create a new item in the database
+//     const newItem = await Item.create(newItemData);
+
+//     // Send a response with the newly created item
+//     res.status(201).json(newItem);
+//   } catch (error) {
+//     // Handle any errors that occur during creation
+//     console.error(error);
+//     res.status(500).json({ message: 'Error creating item' });
+//   }
+// });
+
+// module.exports = router;
+
 
 
 
@@ -300,12 +326,13 @@ finalizeListBtn.addEventListener('click', async () => {
 /**
  * Uncomment the below code to GET data from the database
  */
-const getLists = async (myInput) => {
 
-  const response = await fetch('/api/lists')
-  const data = await response.json()
-  console.log(data)
+const getLists = async() => {
+    const response = await fetch('/api/list')
+    const data = await response.json()
+    console.log(data)
 }
+
 getLists()
 
 

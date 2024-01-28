@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const listRoutes = require('./tripRoutes');
+const listRoutes = require('./listRoutes');
 
 router.use('/list', listRoutes);
 
