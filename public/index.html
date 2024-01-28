@@ -8,18 +8,68 @@
     <script src="./js/script.js" defer></script>
     <link rel="stylesheet" href="./css/style.css" />
     <title>Document</title>
+
 <body>
-    <h1>The Ultimate Vacation Packing List</h1>
-    <input type="text" id="city" placeholder="Choose your Vacation City" />
-    <button id="city-button">Destination</button>
-    <h2>The current temperature for your travel destination is: </h2>
-    <span id="temperature"></span>
-    <button id="submitBtn">Submit</button>
-    <input type="checkbox" id="myCheckbox">
-    <label for="myCheckbox">Keep Item</label>
-    <input type="text" id="myInput" placeholder="Add an Item">
-    <div id="output"></div>
-    <div id="form"></div>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                <h1>The Ultimate Vacation Packing List</h1>
+            </h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <p class="subtitle is-centered">
+
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <p class="title">How it works</p>
+                        <p>This website will help you to make the ultimate packing list for all of your travel
+                            destinations. There are curretnly 3 different types of weather saved. Hot weather, moderate
+                            weather and cold weather. Depending on the current temperature of the city entered, a
+                            packing list will populate to the page.</p>
+                    </div>
+                </div>
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <p class="title">What City do you plan to vacation in?</p>
+                        <p> <input type="text" id="city" placeholder="Choose your Vacation City" />
+                            <button id="city-button">Destination</button>
+                        <h2>The current temperature for your travel destination is: </h2>
+                        <span id="temperature"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <p class="title">Suggested Packing List
+                            <input type="text" id="myInput" placeholder="Add an Item">
+                            <button id="submitBtn">Submit</button>
+                            <label for="myCheckbox">Keep Item</label>
+                            <input type="checkbox" id="myCheckbox">
+                        <div id="output"></div>
+                        <div id="form"></div>
+                        </p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="column is-one-quarter">
+                    <div class="box">
+                        <p class="title">Finalized Packing List</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
