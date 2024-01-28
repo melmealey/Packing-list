@@ -4,7 +4,11 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: rgba(0, 0, 0, 0.141);
+<<<<<<< HEAD
     background: linear-gradient(to bottom, #8101018f, #19770184, #00007988)
+=======
+    background: linear-gradient(to bottom, #a401018f, #19770184, #00007988)
+>>>>>>> 69cf65023e0c01bfe831de59434e3ccf5060b438
 }
 
 h1 {
@@ -15,4 +19,13 @@ h1 {
 
 h2 {
     color:black
+}
+
+footer {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.141);
+    background: linear-gradient(to bottom, #a401018f, #19770184, #00007988)
 }
