@@ -14,6 +14,7 @@ submitBtn.addEventListener('click', function () {
   outputElement.textContent = inputValue;
   document.getElementById('myInput').value = '';
 })
+
 cityBtn.addEventListener('click', function () {
   const city = cityInput.value
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
@@ -121,6 +122,7 @@ cityBtn.addEventListener('click', function () {
       console.error('Error fetching data from OpenWeather API:', error);
     });
 })
+
 fetch(apiUrl)
   .then(response => {
     if (!response.ok) {
@@ -162,41 +164,36 @@ fetch(apiUrl)
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.id = `${category}Checkbox`;
-        checkbox.checked = true; // Set the checkbox to checked by default
-        // Create a label for the weather category
+        checkbox.checked = true; 
         const label = document.createElement("label");
         label.htmlFor = `${category}Checkbox`;
         label.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-        // Create a separate div for the packing list items
         const itemsDiv = document.createElement("div");
         itemsDiv.classList.add("items");
-        // Filter the items based on the weather category and temperature
+
         const filteredItems = items.filter(item => {
           if (category === "hot" && temperature < 70) {
-            return false; // Skip hot weather items if temperature is below 70
+            return false;
           }
           return weatherCategory.includes(item);
         });
-        // Create a checkbox for each item
+
         filteredItems.forEach(item => {
           const itemCheckbox = document.createElement("input");
           itemCheckbox.type = "checkbox";
           itemCheckbox.id = item;
-          itemCheckbox.checked = true; // Set the checkbox to checked by default
+          itemCheckbox.checked = true;
           itemsDiv.appendChild(itemCheckbox);
-          // Create a label for each item in the array
           const itemLabel = document.createElement("label");
           itemLabel.htmlFor = item;
           itemLabel.textContent = item;
           itemsDiv.appendChild(itemLabel);
         });
-        // Append the items div to the category div
+      
         categoryDiv.appendChild(itemsDiv);
-        // Append the category div to the output div
         outputID.appendChild(categoryDiv);
       });
     };
-    // Call the updatePackingList function with the temperature
     updatePackingList(tempData.list[0].main.temp);
   })
   .catch(error => {
@@ -216,25 +213,22 @@ fetch(apiUrl)
 //   const data = await response.json()
 //   console.log(data)
 // }
-//Issue #10?
-const finalizeListBtn = document.getElementById('finalizeListBtn'); // Replace 'finalizeListBtn' with the actual ID of your button
+
+const finalizeListBtn = document.getElementById('finalizeListBtn');
 finalizeListBtn.addEventListener('click', async () => {
   try {
-    // Creating objects from the arrays
     const hotListObj = { category: 'hot', items: ['Shorts', 'Tank top', 'Sunglasses', 'Sandals', 'Sunblock'] };
     const moderateListObj = { category: 'moderate', items: ['Jeans', 'T-shirt', 'Hoodie', 'Tennis shoes', 'Ankle socks'] };
     const coldListObj = { category: 'cold', items: ['Winter Coat', 'Hat', 'Gloves', 'Boots', 'Boot socks', 'Sweater'] };
-    // Make post requests for each list
+
     await postLists(hotListObj);
     await postLists(moderateListObj);
     await postLists(coldListObj);
-    // Retrieve and display the lists under the "My Packing List" heading
-    // We may need another function to fetch and display the lists?
-    // Example: Fetch and display the lists
+ 
     const hotList = await fetch('/api/lists?category=hot');
     const moderateList = await fetch('/api/lists?category=moderate');
     const coldList = await fetch('/api/lists?category=cold');
-    // Assuming you have a function displayList that displays the lists in the UI
+    
     displayList(await hotList.json(), 'Hot Weather List');
     displayList(await moderateList.json(), 'Moderate Weather List');
     displayList(await coldList.json(), 'Cold Weather List');
