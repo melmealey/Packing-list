@@ -202,17 +202,17 @@ fetch(apiUrl)
 
 // * Uncomment the below code to POST data to the database
 
-// const postLists = async (listObj) => {
-//   const response = await fetch('/api/lists', {
-//     method: 'POST',
-//     body: JSON.stringify(listObj),
-//     headers: {
-//       'Content-Type': 'application/json',
-//     }
-//   })
-//   const data = await response.json()
-//   console.log(data)
-// }
+const postLists = async (listObj) => {
+  const response = await fetch('/api/lists', {
+    method: 'POST',
+    body: JSON.stringify(listObj),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+  const data = await response.json()
+  console.log(data)
+}
 
 const finalizeListBtn = document.getElementById('finalizeListBtn');
 finalizeListBtn.addEventListener('click', async () => {
